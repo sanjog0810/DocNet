@@ -5,6 +5,7 @@ import { CasePost } from '../../types';
 import { useEffect } from 'react';
 import axios from 'axios';
 import axiosInstance from '../../context/axiosInstance';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export function CasePosts() {
   const { user } = useAuth();
@@ -186,16 +187,17 @@ export function CasePosts() {
   </div>
 
   {/* File download link */}
-  {post.fileUrl && (
-    <a 
-      href={`http://localhost:8080${post.fileUrl}`} 
-      download 
-      className="btn btn-outline"
-      style={{ marginTop: '0.5rem' }}
-    >
-      📎 Download Attached File
-    </a>
-  )}
+
+{post.fileUrl && (
+  <a 
+    href={`${BASE_URL}${post.fileUrl}`} 
+    download 
+    className="btn btn-outline"
+    style={{ marginTop: '0.5rem' }}
+  >
+    📎 Download Attached File
+  </a>
+)}
 </div>
 
 

@@ -29,7 +29,7 @@ export function FileUpload() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const res = await axiosInstance.get('http://localhost:8080/consultations/doctors');
+        const res = await axiosInstance.get('/consultations/doctors');
         setDoctors(res.data);
       } catch (err) {
         console.error('Failed to fetch doctors', err);
@@ -42,7 +42,7 @@ export function FileUpload() {
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        const res = await axiosInstance.get(`http://localhost:8080/consultations/status/${user.id}`);
+        const res = await axiosInstance.get(`/consultations/status/${user.id}`);
         const statuses: RequestStatus = {};
         const replies: { [doctorId: string]: string } = {};
   
@@ -84,7 +84,7 @@ export function FileUpload() {
     formData.append('patientId', user.id);
 
     try {
-      await axiosInstance.post('http://localhost:8080/consultations/request', formData, {
+      await axiosInstance.post('/consultations/request', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setStatus((prev) => ({ ...prev, [doctorId]: 'pending' }));

@@ -29,7 +29,7 @@ export function DonationBoard() {
 
   // Fetch all donations
   useEffect(() => {
-    fetchWithAuth('http://localhost:8080/donation')
+    fetchWithAuth('/donation')
       .then(res => res.json())
       .then(data => {
         const formatted = data.map((d: any) => ({
@@ -45,7 +45,7 @@ export function DonationBoard() {
   // Fetch user's requests when user changes
   useEffect(() => {
     if (user?.email) {
-      fetchWithAuth(`http://localhost:8080/user/${user.email}`)
+      fetchWithAuth(`/user/${user.email}`)
         .then(res => res.json())
         .then(data => {
           const formatted = data.map((d: any) => ({
@@ -67,7 +67,7 @@ export function DonationBoard() {
 
   const handleDeleteRequest = async (id: string) => {
     try {
-      const res = await fetchWithAuth(`http://localhost:8080/donation/${id}`, {
+      const res = await fetchWithAuth(`/donation/${id}`, {
         method: 'DELETE'
       });
 
@@ -85,7 +85,7 @@ export function DonationBoard() {
   };
   const handleUpdateRequest = async (updatedRequest: DonationRequest) => {
     try {
-      const res = await fetchWithAuth(`http://localhost:8080/donation/update`, {
+      const res = await fetchWithAuth(`/donation/update`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedRequest)
@@ -125,7 +125,7 @@ export function DonationBoard() {
     };
 
     try {
-      const res = await fetchWithAuth('http://localhost:8080/donation', {
+      const res = await fetchWithAuth('/donation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

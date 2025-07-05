@@ -26,7 +26,7 @@ export function DoctorRequestBoard() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await axiosInstance.get(`http://localhost:8080/consultations/doctor/${user.id}`);
+        const res = await axiosInstance.get(`/doctor/${user.id}`);
         setRequests(res.data);
       } catch (err) {
         console.error('Failed to load requests', err);
@@ -40,7 +40,7 @@ export function DoctorRequestBoard() {
   
     try {
       await axiosInstance.post(
-        `http://localhost:8080/consultations/approve`,
+        `/consultations/approve`,
         null,
         {
           params: {
@@ -67,7 +67,7 @@ export function DoctorRequestBoard() {
     const doctorMessage = messages[requestId] || '';
     try {
       await axiosInstance.post(
-        `http://localhost:8080/reject`,
+        `/reject`,
         null,
         {
           params: {
@@ -87,7 +87,7 @@ export function DoctorRequestBoard() {
 
   const downloadFile = async (requestId: number, fileName: string) => {
     try {
-      const res = await axiosInstance.get(`http://localhost:8080/consultations/download/${requestId}`, {
+      const res = await axiosInstance.get(`/consultations/download/${requestId}`, {
         responseType: 'blob',
       });
 

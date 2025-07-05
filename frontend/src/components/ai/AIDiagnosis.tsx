@@ -14,7 +14,7 @@ export function AIDiagnosis() {
  
   const fetchDiagnosis = async (symptomText: string): Promise<AIDiagnosisType> => {
        const { data } = await axiosInstance.post<AIDiagnosisType>(
-         `${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/aiDiag`,
+         `${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'}/aiDiag`,
          { symptoms: symptomText }           
        );
     return data;
