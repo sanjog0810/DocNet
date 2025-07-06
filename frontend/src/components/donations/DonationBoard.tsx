@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Plus, MapPin, Clock, Phone, User, X, Trash2 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { DonationRequest } from '../../types';
-import { fetchWithAuth } from '../../context/FetchWithAuth';
+import { fetchWithAuth } from '../../context/fetchWithAuth';
 
 export function DonationBoard() {
   const { user } = useAuth();
