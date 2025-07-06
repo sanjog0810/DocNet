@@ -26,7 +26,7 @@ export function DoctorRequestBoard() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const res = await axiosInstance.get(`/doctor/${user.id}`);
+        const res = await axiosInstance.get(`/consultations/doctor/${user.id}`);
         setRequests(res.data);
       } catch (err) {
         console.error('Failed to load requests', err);
